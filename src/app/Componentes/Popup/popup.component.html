@@ -1,0 +1,71 @@
+<div class = "flexEnd"> 
+  
+  <button mat-icon-button class = "flexEnd" (click) = "closePopUp()"> <mat-icon> X </mat-icon> </button>
+
+</div>
+
+<div mat-dialog-content>
+
+  <div class = "flex-card">
+
+    <div class = "image-row"> <img alt = "Photo of beer" mat-card-lg-image [src] = "beer.image_url"> </div>
+    
+    <div class = "info-row">
+      
+      <h2> {{beer.name}} </h2>
+      
+      <p class = "gray-text"> {{beer.tagline}} </p>
+      
+      <hr>
+      
+      <p>
+        
+        <b>IBU: </b> {{beer.ibu}} &nbsp;&nbsp;
+        
+        <b>ABV: </b> {{beer.abv}} &nbsp;&nbsp;
+        
+        <b>EBC: </b> {{beer.ebc}} &nbsp;&nbsp;
+      
+      </p>
+      
+      <p> {{beer.description}} </p>
+      
+      <br/>
+      
+      <b> Mejor mezclado con:</b>
+      
+      <ul> <li class = "li" *ngFor = "let pairing of beer.food_pairing"> {{pairing}} </li> </ul>
+    
+    </div>
+  
+  </div>
+  
+  <br/>
+  
+  <div>
+    
+    <h3> Otras cervezas que te puedan gustar </h3>
+    
+    <div class = "grid-container">
+      
+      <mat-grid-list [cols] = "3" rowHeight = "220px">
+      
+        <mat-grid-tile *ngFor = "let similarBeer of similarBeers">
+          
+          <mat-card class = "recommended-card">
+            
+            <mat-card-header> <img alt = "Beer Image" class="mat-card-image" mat-card-sm-image [src] = "similarBeer.image_url"> </mat-card-header>
+            
+            <mat-card-content class = "dashboard-card-content"> <h5> {{similarBeer.name}} </h5> </mat-card-content>
+          
+          </mat-card>
+        
+        </mat-grid-tile>
+      
+      </mat-grid-list>
+    
+    </div>
+  
+  </div>
+
+</div>

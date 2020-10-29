@@ -1,0 +1,8 @@
+.primaryColor {
+  
+  background-color: rgb(202, 144, 69); height: 50px; position: sticky;
+     
+  width: 100%; top: 0; z-index: 1; color: #ffffff; margin-bottom: -8px;}
+ 
+.flexEnd {flex: auto;justify-content: flex-end;}
+   

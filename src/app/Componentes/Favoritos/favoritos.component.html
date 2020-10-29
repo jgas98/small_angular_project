@@ -1,0 +1,55 @@
+<div class = "content">
+
+  <div class = "header" role  ="banner" >
+
+    <h1> Libreria de cervezas </h1>
+
+    <p> Aqui estan tus cervezas favoritas, si ya te has cansado de alguna de ellas, quitale la estrella</p>
+
+  </div>
+  
+  <section class = "container content_body">
+  
+    <div class = "text-center" *ngIf = "isFetchingBeers">
+      
+      <div class = "alert alert-primary" role = "status"> Cargando Cervezas Favoritas</div>
+      
+    </div>
+    
+    <div class = "text-center"  *ngIf = "favouriteBeers.length < 1 && !isFetchingBeers">
+        
+      <div class = "alert alert-primary" role = "alert"> No tienes ninguna cerveza marcada como favorita </div>
+      
+    </div>
+    
+    <div class = "card-container" *ngIf = "favouriteBeers.length > 0 && !isFetchingBeers">
+        
+      <div class = "card" *ngFor = "let beer of favouriteBeers; let i = index;">
+          
+        <div class = "star" >
+            
+          <button mat-icon-button class = "star-button" [ngClass] = "{'star-button-favourite': beer.isFavourite}" (click) = "removeFavourite(beer, i)">
+              
+            <mat-icon> {{beer.isFavourite? 'star': 'star_border'}} </mat-icon>
+            
+          </button>
+        
+        </div>
+        
+        <a target = "_blank"  (click) = "openPopUp(beer)" >      
+            
+          <img alt = "Imagen Cerveza" src = '{{beer.image_url}}'/>
+            
+          <h5> {{ beer.name }} </h5>
+          
+          <h6 class = "gray-text"> {{beer.tagline}} </h6>
+          
+        </a>
+        
+      </div>
+      
+    </div>
+  
+  </section>
+
+</div>
